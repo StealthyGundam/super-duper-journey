@@ -20,7 +20,7 @@ h1 {
   text-align: center;
   font-family: 'Franklin Gothic Condensed', sans-serif;
 
-  font-size: clamp(50px, 8vw, 70px);
+  font-size: clamp(30px, 8vw, 70px);
 
   color: 000;
   white-space: nowrap;
@@ -194,8 +194,6 @@ input, select {
 </style>
 </head>
 <body>
-
-<h1>Character Creation</h1>
 <!======== 1. Character Info  ========>
 <section>
   <h2>Character Information</h2>
@@ -562,10 +560,12 @@ function renderSkills() {
 
 // --- Perks setup ---
 const perkData = [
-  {name:"Adderall Prescription", desc:"Time to focus", efec:"+2 Awareness, +2 Intelligence, -2 Navigation, -2 Procrastination"},
-  {name:"Front Seat Navigator Companion", desc:"You will never miss your turn", efec:"+1 Charisma, +3 Navigation, -2 Patience, -2 Awareness"},
-  {name:"Leftover Logic", desc:"Things that don’t make sense suddenly make partial sense", efec:"+2 Procrastination, +2 Wisdom, -2 Awareness, -2 Luck, -2 Patience"},
-  {name:"Reverse Psychology", desc:"Puzzles try to trick you less when you overthink them", efec:"+6 Procrastination, -3 Wisdom, -2 Intelligence, -2 Patience"}
+  {name:"💊 Adderall Prescription ☕️", desc:"Mixing adderall and caffeine is generally not recommended", efec:"+2 Awareness, +2 Intelligence, -2 Navigation, -2 Procrastination"},
+  {name:"🧑‍✈️ Front Seat Navigator Companion 🚗", desc:"Certified expert in driving from the comfort of doing nothing", efec:"+1 Charisma, +3 Navigation, -2 Patience, -2 Awareness"},
+  {name:"💡Leftover Logic", desc:"Things that don’t make sense suddenly make partial sense", efec:"+2 Procrastination, +2 Wisdom, -2 Awareness, -2 Luck, -2 Patience"},
+  {name:"🎭 Reverse Psychology 🔄", desc:"Puzzles try to trick you less when you overthink them", efec:"+6 Procrastination, -3 Wisdom, -2 Intelligence, -2 Patience"},
+{name:"🍀 Seven‑Leaf Clover 🎲", desc:"Your dice have a habit of always hitting the high numbers", efec:"+7 Luck, -1 All Other Skills"}
+
 ];
 
 const perksContainer = document.getElementById("perksContainer");
@@ -577,31 +577,73 @@ perkData.forEach(p => {
   const effects = {};
   p.efec.split(",").forEach(part => {
     const match = part.trim().match(/^([+-]\d+)\s+(.+)$/);
-    if(match) effects[match[2]] = parseInt(match[1]);
+    if (!match) return;
+
+    const value = parseInt(match[1]);
+    const target = match[2];
+
+    if (target === "All Other Skills") {
+      effects.__ALL_OTHER__ = value;
+    } else {
+      effects[target] = value;
+    }
   });
   p.effectsObj = effects;
 });
 
+
 // Apply perk effects safely
 function applyPerkEffects(perk) {
-  if(lastAppliedPerk){
-    Object.keys(lastAppliedPerk.effectsObj).forEach(skill => {
-      if(skillValues[skill] !== undefined) skillValues[skill] -= lastAppliedPerk.effectsObj[skill];
+  const allSkills = skillData.map(s => s.name);
+
+  // Remove last perk
+  if (lastAppliedPerk) {
+    Object.keys(lastAppliedPerk.effectsObj).forEach(key => {
+      const val = lastAppliedPerk.effectsObj[key];
+
+      if (key === "__ALL_OTHER__") {
+        allSkills.forEach(skill => {
+          if (!Object.keys(lastAppliedPerk.effectsObj).includes(skill)) {
+            skillValues[skill] -= val;
+          }
+        });
+      } else if (skillValues[key] !== undefined) {
+        skillValues[key] -= val;
+      }
     });
   }
-  if(perk){
-    Object.keys(perk.effectsObj).forEach(skill => {
-      if(skillValues[skill] !== undefined) skillValues[skill] += perk.effectsObj[skill];
-      if(skillValues[skill] < 1) skillValues[skill] = 1;
-      if(skillValues[skill] > 10) skillValues[skill] = 10;
+
+  // Apply new perk
+  if (perk) {
+    Object.keys(perk.effectsObj).forEach(key => {
+      const val = perk.effectsObj[key];
+
+      if (key === "__ALL_OTHER__") {
+        allSkills.forEach(skill => {
+          if (!Object.keys(perk.effectsObj).includes(skill)) {
+            skillValues[skill] += val;
+          }
+        });
+      } else if (skillValues[key] !== undefined) {
+        skillValues[key] += val;
+      }
     });
     lastAppliedPerk = perk;
-  } else lastAppliedPerk = null;
+  } else {
+    lastAppliedPerk = null;
+  }
+
+  // Clamp values 1–10
+  allSkills.forEach(skill => {
+    if (skillValues[skill] < 1) skillValues[skill] = 1;
+    if (skillValues[skill] > 10) skillValues[skill] = 10;
+  });
 
   updateSkillDisplay();
   saveSkills();
   localStorage.setItem("selectedPerk", perk ? perk.name : null);
 }
+
 
 // Render perks
 function renderPerks() {
@@ -682,4 +724,3 @@ renderPerks();
 
 </body>
 </html>
-
