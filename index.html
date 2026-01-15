@@ -15,21 +15,28 @@ body {
   text-align: center;
 }
 
-h1 {margin-top: 20px;
+h1 {
+  margin-top: 20px;
   text-align: center;
-font-family: 'Franklin Gothic Condensed', sans-serif;
-font-size: 45px;
-text-color: #000000;
-text-shadow:0 0 10px #00ffff,
-           0 0 20px #006cffff,
-           0 0 30px #8d00ffff,
-           0 0 40px #ff00f5ff;
+  font-family: 'Franklin Gothic Condensed', sans-serif;
+
+  font-size: clamp(30px, 8vw, 70px);
+
+  color: 000;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #006cff,
+    0 0 30px #8d00ff,
+    0 0 40px #ff00f5;
 }
+
 h2 {
 font-family: 'Franklin Gothic Condensed', sans-serif;
   text-align: center;
   margin: 0;
-
+  color: 000;
 font-size: 30px;
 text-shadow:0 0 2px #00ffff,
            0 0 4px #006cffff,
@@ -675,4 +682,3 @@ renderPerks();
 
 </body>
 </html>
-
