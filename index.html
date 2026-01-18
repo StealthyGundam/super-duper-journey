@@ -10,90 +10,104 @@
 body {
   font-family: 'Compacta', sans-serif;
   font-size: 16px;
-  background: #111;
-  color: #eee;
+    color: #eee;
   text-align: center;
-}
+  background: #000000;
+  background-image: url("https://cdn.prod.website-files.com/5ff36780a108495c598ce192/61a217dea2db7e386256437f_bg-dots.svg");
+  background-size: .5rem;
+  background-repeat: repeat; /* default */
 
+}
 h1 {
   margin-top: 20px;
   text-align: center;
   font-family: 'Franklin Gothic Condensed', sans-serif;
-
   font-size: clamp(30px, 8vw, 70px);
-
-  color: 000;
+  color: #ffffff;
   white-space: nowrap;
-
   text-shadow:
     0 0 10px #00ffff,
     0 0 20px #006cff,
     0 0 30px #8d00ff,
     0 0 40px #ff00f5;
 }
-
 h2 {
 font-family: 'Franklin Gothic Condensed', sans-serif;
-  text-align: center;
-  margin: 0;
-  color: 000;
+text-align: center;
+margin: 0;
+color: #ffffff;
 font-size: 30px;
-text-shadow:0 0 2px #00ffff,
-           0 0 4px #006cffff,
-           0 0 6px #576dc9ff,
-           0 0 8px #ff00f5ff;}
+text-shadow:
+0 0 2px #00ffff,
+0 0 4px #006cffff,
+0 0 6px #576dc9ff,
+0 0 8px #ff00f5ff;}
+
 #rollDiceBtn {
   display: block;      /* allows margin auto to work */
   margin: 20px auto;   /* centers the button horizontally */
   font-size: 16px;
   cursor: pointer;
 }
-
-
 section {
 margin:30px auto;
 padding:10px;
 border-radius:20px;
 width: 100%;
-max-width:800px;
-background:#222;
+max-width: 410px;
+background:#131212;
+background-image: url("https://cdn.prod.website-files.com/5ff36780a108495c598ce192/647865e3c7b7fd5334b11c92_Background%20Lines.svg");
+background-position: 100% 0;
+background-position-x: 100%;
+background-position-y: 0px;
+background-repeat: no-repeat;
+background-size: 80%;
 box-shadow:
-           0 0 2px #fff,
+           0 0 2px #ffffff,
            0 0 6px #00ffff,
-           0 0 9px #006cffff,
-           0 0 12px #576dc9ff,
-           0 0 16px #ff00f5ff,
-     inset -0 -0 2px #fff,
-     inset -0 -0 6px #00ffff,
-     inset -0 -0 9px #006cffff,
-     inset -0 -0 12px #576dc9ff,
-     inset -0 -0 16px #ff00f5ff;
+           0 0 9px #4e83ff,
+           0 0 12px #a58cff,
+    inset -0 -0 2px #ffffff,
+    inset -0 -0 6px #00ffff,
+    inset -0 -0 9px #4e83ff,
+    inset -0 -0 12px #a58cff;
+
 
          
 text-align:left; }
 
-button { margin:5px auto; padding:5px 15px; font-size:1 rem; cursor:pointer; background:#333; color:#eee; border:none; border-radius:5px; }
+button { margin:5px auto; padding:5px 15px; font-size: 24px; cursor:pointer; background:#333; color:#eee; border:none; border-radius:5px; }
 button:hover { background:#555; }
-input, select { font-size:0.2 rem; padding:5px; margin-top:5px; border-radius:5px; border:1px solid #555; background:#111; color:#eee; width:100%; box-sizing:border-box; }
+#startQuestBtn {
+  display: block; /* 🔑 THIS IS THE FIX */
+  font-family: 'Franklin Gothic Condensed', sans-serif;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 30px;
+  padding: 4px 15px;
+  cursor: pointer;
+  background: #333;
+  color: #eee;
+  border: none;
+  border-radius: 5px;
+  text-shadow:
+    0 0 2px #00ffff,
+    0 0 4px #006cffff,
+    0 0 6px #576dc9ff,
+    0 0 8px #ff00f5ff;
+}
+
+input, select { padding:5px; margin-top:5px; border-radius:5px; border:1px solid #555; background:#111; color:#eee; width:100%; box-sizing:border-box; }
 input[disabled], select[disabled] { background:#222; color:#888; }
 
 * {box-sizing: border-box;}
 
 .dice-container { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:10px; }
 .dice-wrapper { position:relative; width:150px; height:150px; cursor:pointer; border-radius:10px; border:2px solid transparent; }
-.dice-number-overlay { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:60px; font-weight:bold; color:#fff; pointer-events:none;-webkit-text-stroke: 1px black;text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;}
-
-
+.dice-number-overlay { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:60px; font-weight:bold; color:#fff; pointer-events:none;-webkit-text-stroke: 4px rgb(0, 0, 0); paint-order: stroke fill;}
 /*===============================================================================*/
-Section 1 CHARACTER {
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 500px;
-  background: #222;
-  box-shadow: 0 0 10px #000;
-  text-align: left;
-}
+
+
 
 input, select {
   font-size: 0.8rem;
@@ -136,78 +150,92 @@ input, select {
   border-radius: 3px;
   position: relative;
 }
-
-.cf-box input:checked + .cf-check::after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 1px;
-  width: 6px;
-  height: 12px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.cf-text {
-  flex-grow: 1;
-  font-size: 15px;
-  color: #eee;
-}
-
-.cf-brand {
-  text-align: right;
-  font-size: 11px;
-  color: #bbb;
-}
-
-.cf-brand img {
-  height: 18px;
-  display: block;
-  margin-left: auto;
-  margin-bottom: 2px;
-  filter: brightness(0.9);
-}
-
-.cf-links a {
-  color: #bbb;
-  text-decoration: none;
-}
-
-.cf-links a:hover {
-  text-decoration: underline;
-}
+.cf-box input:checked + .cf-check::after {content: "";position: absolute;left: 5px;top: 1px;width: 6px;height: 12px;border: solid #fff;border-width: 0 2px 2px 0; transform: rotate(45deg);}
+.cf-text {flex-grow: 1;font-size: 15px;color: #eee;}
+.cf-brand { text-align: right; font-size: 11px; color: #bbb;}
+.cf-brand img {height: 18px;display: block; margin-left: auto; margin-bottom: 2px;filter: brightness(0.9);}
+.cf-links a {color: #bbb;text-decoration: none;}
+.cf-links a:hover {text-decoration: underline;}
 /*===============================================================================*/
 /* Section 2: Perks */
+#skillsContainer button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 24px;
+  line-height: 40px;     /* centers text vertically */
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stroke {font-weight: bold;-webkit-text-stroke: 3px rgb(0, 0, 0); paint-order: stroke fill;}
 #perksContainer table {width: 100%;border-collapse: collapse;}
 #perksContainer tr {border-bottom: 1px solid #444;}
 #perksContainer td {padding: 0px 4px;vertical-align: left;}
 #perksContainer td.checkbox-cell {width: 20;text-align: left;}
-#perksContainer input[type="checkbox"] {transform: scale(1.3);cursor: pointer;}
-#perksContainer .perk-name {font-weight: bold;font-size: 20px;color: #5280f8ff}
+/* ===============================
+   Neon RPG Checkbox Style
+================================ */
+
+#perksContainer input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 2px solid #006cffff;
+  background: #131212;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+#perksContainer input[type="checkbox"]:hover {box-shadow:0 0 6px rgb(255, 255, 255),inset 0 0 6px rgba(0,0,0,0.8);}
+/* Checked state */
+#perksContainer input[type="checkbox"]:checked {background: radial-gradient(circle at center, rgba(0, 0, 0, 0.523), #191d9461);border-color: #9db4ff;
+  box-shadow:
+    0 0 6px rgb(0, 55, 255),
+    0 0 18px #6a99ff;}
+/* Checkmark */
+#perksContainer input[type="checkbox"]:checked::after {content: "";position: absolute;top: 50%;left: 50%;transform: translate(-50%, -58%);color: #ffffff;font-size: 16px;font-weight: bold;text-shadow: 0 0 4px #fff;}
+/* Disabled */
+#perksContainer input[type="checkbox"]:disabled {opacity: 0.4;cursor: not-allowed; box-shadow: none;}
+#perksContainer input[type="checkbox"]:checked {animation: perkPulse .5s ease-out;}
+@keyframes perkPulse {0% { transform: scale(0.1); } 100% { transform: scale(1); }}
+
+#perksContainer .perk-name {font-size: 20px; color: #5280f8ff; }
 #perksContainer .perk-desc {font-size: 12px;color: #af7ff7ff;margin-top: 1px;}
-#perksContainer .perk-efec {font-size: 10px;color: #c935cdff;margin-top: 1px;}
+.perk-efec  {font-size: 10px; margin-top: 1px;margin-bottom: 2px;}
+.perk-plus  {color: #00c853;}
+.perk-minus {color: #d50000;}
+
+.skill-name {font-size: 20px;color: #5280f8ff;}
+.skill-desc {font-size: 12px;color: #af7ff7ff;margin-top: 1px;}
+.skill-value{font-size: 24px;}
+.skill-boosted { color: #00c853; /* green */}
+.skill-penalized { color: #d50000; /* red */}
+
 
 /*===============================================================================*/
-
-
 </style>
 </head>
 <body>
 <!======== 1. Character Info  ========>
 <section>
   <h2>Character Information</h2>
-  <input type="text" id="charName" placeholder="-- Choose Your Character's Name --" />
+  <input type="text" id="charName" placeholder="-- Choose Your Character's Name --" minlength="3" required/>
   <select id="raceSelect">
     <option value="">-- Choose a Race --</option>
     <option value="Dragonborn">Dragonborn</option>
-    <option value="Drow">Drow</option>
     <option value="Dwarf">Dwarf</option>
     <option value="Elf">Elf</option>
     <option value="Gnome">Gnome</option>
     <option value="Halfling">Halfling</option>
     <option value="Human">Human</option>
     <option value="Orc">Orc</option>
+    <option value="Robot">Robot</option>  
     <option value="Tiefling">Tiefling</option>
   </select>
 <!-- Cloudflare-style captcha checkbox -->
@@ -226,11 +254,11 @@ input, select {
 </div>
   <select id="classSelect">
     <option value="">-- Choose a Class --</option>
-    <option>Barbarian</option>
     <option>Bard</option>
     <option>Cleric</option>
     <option>Druid</option>
     <option>Fighter</option>
+    <option>Mermaid</option>
     <option>Monk</option>
     <option>Paladin</option>
     <option>Rogue</option>
@@ -286,8 +314,6 @@ captchaCheck.addEventListener("change", () => {
 
 </section>
 <script>
-// --- Ensure skillPoints exists ---
-if (typeof skillPoints === "undefined") skillPoints = 0;
 
 // --- Dice Setup ---
 function createDice(containerId) {
@@ -341,17 +367,11 @@ const diceWrappers = [
 // Load saved state
 let diceRolls = JSON.parse(localStorage.getItem("diceRolls")) || [];
 let discarded = JSON.parse(localStorage.getItem("discardedDice")) ?? null;
-let keptValue = JSON.parse(localStorage.getItem("keptDiceValue")) ?? 0;
+
 let canDiscard = false;
 
 // Roll button
 const rollBtn = document.getElementById("rollDiceBtn");
-
-// Update skill display function (placeholder)
-function updateSkillDisplay() {
-  const spEl = document.getElementById("skillPoints");
-  if (spEl) spEl.textContent = skillPoints;
-}
 
 // --- Restore dice if already rolled ---
 function restoreDiceState() {
@@ -369,7 +389,7 @@ function restoreDiceState() {
 
       // Apply kept value
       skillPoints += keptValue;
-      updateSkillDisplay();
+      updateUI();
     }
   }
 }
@@ -420,7 +440,9 @@ diceWrappers.forEach((wrapper, idx) => {
     localStorage.setItem("diceRolls", JSON.stringify(diceRolls));
     localStorage.setItem("discardedDice", JSON.stringify(discarded));
     localStorage.setItem("keptDiceValue", JSON.stringify(keptValue));
-
+    if (localStorage.getItem("skillPoints") === null) {
+    skillPoints = totalSkillPoints;
+}
     // Visual cues
     wrapper.style.border = "2px solid red";
     diceWrappers[1 - idx].style.border = "2px solid green";
@@ -428,7 +450,7 @@ diceWrappers.forEach((wrapper, idx) => {
 
     // Add kept value to skill points
     skillPoints += keptValue;
-    updateSkillDisplay();
+    updateUI();
   });
 });
 </script>
@@ -439,287 +461,470 @@ diceWrappers.forEach((wrapper, idx) => {
   <p>You have <span id="skillPoints">0</span> points to spend</p>
 <div id="skillsContainer"></div>
 
-
-
-
 <script>
-// --- Skill setup ---
+/* ======================================================
+   GAME STATE
+====================================================== */
+
+// Skill definitions
 const skillData = [
-  { name:"Awareness", desc:"Notice objects hiding in plain sight, even if obvious" },
-  { name:"Charisma", desc:"Convince inanimate objects and pets to do what you want" },
-  { name:"Intelligence", desc:"Solve complex problems and unlock clever tricks" },
-  { name:"Luck", desc:"Strange coincidences tend to favor you unexpectedly" },
-  { name:"Navigation", desc:"Find your way with more accurate maps and markers" },
-  { name:"Patience", desc:"Reduces cooldowns and delays between repeated actions" },
-  { name:"Procrastination", desc:"Delay actions long enough to create new opportunities" },
-  { name:"Wisdom", desc:"Recall sequences and past events with greater ease" }
+  { name:"Awareness", desc:"Notice more objects hiding in plain sight, even if was already obvious" },
+  { name:"Charisma", desc:"Convince inanimate objects and pets to do anything you want them to do" },
+  { name:"Intelligence", desc:"Ability to solve complex problems and unlock clever tricks" },
+  { name:"Luck", desc:"Strange coincidences tend to favor you unexpectedly both good and bad" },
+  { name:"Navigation", desc:"Find your way around the internet and woods with more accurate documents" },
+  { name:"Patience", desc:"Reduces cooldowns and debounce timing for delays with repeated actions" },
+  { name:"Procrastination", desc:"Delay the task at hand just long enough to create new opportunities" },
+  { name:"Wisdom", desc:"Recall sequences and past events from memory with greater ease" }
 ];
 
-// --- Load or initialize skill values ---
-let skillValues = {};
-skillData.forEach(s => skillValues[s.name] = 3); // reset all to base 3
-
-// --- Restore skill points from dice roll ---
-let diceKeptValue = JSON.parse(localStorage.getItem("keptDiceValue")) || 0;
-let skillPoints = diceKeptValue;
-
-// --- Update skill display ---
-function updateSkillDisplay() {
-  document.getElementById("skillPoints").textContent = skillPoints;
-  skillData.forEach(s => {
-    const valEl = document.getElementById(s.name + "Val");
-    if (valEl) valEl.textContent = skillValues[s.name] < 10 ? "0" + skillValues[s.name] : skillValues[s.name];
-  });
-}
-
-// --- Save skills to localStorage ---
-function saveSkills() {
-  localStorage.setItem("skillValues", JSON.stringify(skillValues));
-  localStorage.setItem("skillPoints", JSON.stringify(skillPoints));
-}
-
-// --- Render skills table ---
-function renderSkills() {
-  const container = document.getElementById("skillsContainer");
-  container.innerHTML = "";
-
-  const table = document.createElement("table");
-  table.style.width = "100%";
-  table.style.borderCollapse = "collapse";
-
-  skillData.forEach(s => {
-    const tr = document.createElement("tr");
-    tr.style.borderBottom = "1px solid #444";
-    tr.style.verticalAlign = "middle";
-
-    // "-" button
-    const tdDec = document.createElement("td");
-    tdDec.style.textAlign = "left";
-    const decBtn = document.createElement("button");
-    decBtn.textContent = "-";
-    decBtn.style.padding = "6px 10px";
-    decBtn.addEventListener("click", () => {
-      if (skillValues[s.name] > 1) {
-        skillValues[s.name]--;
-        skillPoints++;
-        updateSkillDisplay();
-        saveSkills();
-      }
-    });
-    tdDec.appendChild(decBtn);
-    tr.appendChild(tdDec);
-
-    // Value display
-    const tdVal = document.createElement("td");
-    tdVal.style.textAlign = "left";
-    const valSpan = document.createElement("span");
-    valSpan.id = s.name + "Val";
-    valSpan.style.fontWeight = "bold";
-    valSpan.style.fontSize = "20px";
-    valSpan.textContent = skillValues[s.name];
-    tdVal.appendChild(valSpan);
-    tr.appendChild(tdVal);
-
-    // "+" button
-    const tdInc = document.createElement("td");
-    tdInc.style.textAlign = "left";
-    const incBtn = document.createElement("button");
-    incBtn.textContent = "+";
-    incBtn.style.padding = "6px 10px";
-    incBtn.addEventListener("click", () => {
-      if (skillPoints > 0 && skillValues[s.name] < 10) {
-        skillValues[s.name]++;
-        skillPoints--;
-        updateSkillDisplay();
-        saveSkills();
-      }
-    });
-    tdInc.appendChild(incBtn);
-    tr.appendChild(tdInc);
-
-    // Skill info
-    const tdInfo = document.createElement("td");
-    const nameDiv = document.createElement("div");
-    nameDiv.textContent = s.name;
-    nameDiv.style.fontWeight = "bold";
-    nameDiv.style.fontSize = "20px";
-    const descDiv = document.createElement("div");
-    descDiv.textContent = s.desc;
-    descDiv.style.fontSize = "10px";
-    descDiv.style.color = "#aaa";
-    descDiv.style.marginTop = "2px";
-    tdInfo.appendChild(nameDiv);
-    tdInfo.appendChild(descDiv);
-    tr.appendChild(tdInfo);
-
-    table.appendChild(tr);
-  });
-
-  container.appendChild(table);
-}
-
-// --- Perks setup ---
+// Perk definitions
 const perkData = [
-  {name:"Adderall Prescription", desc:"Mixing adderall and caffeine is generally not recommended", efec:"+2 Awareness, +2 Intelligence, -2 Navigation, -2 Procrastination"},
-  {name:"Front Seat Navigator Companion", desc:"Certified expert in driving from the comfort of doing nothing", efec:"+1 Charisma, +3 Navigation, -2 Patience, -2 Awareness"},
-  {name:"Leftover Logic", desc:"Things that don’t make sense suddenly make partial sense", efec:"+2 Procrastination, +2 Wisdom, -2 Awareness, -2 Luck, -2 Patience"},
-  {name:"Reverse Psychology", desc:"Puzzles try to trick you less when you overthink them", efec:"+6 Procrastination, -3 Wisdom, -2 Intelligence, -2 Patience"},
-{name:"Seven‑Leaf Clover", desc:"Your dice have a habit of always hitting the high numbers", efec:"+7 Luck, -1 All Other Skills"}
-
+  {name:"Adderall Prescription", desc:"Mixing adderall and caffeine is generally not recommended", efec:"+4 Awareness, +2 Intelligence, -2 Navigation, -2 Procrastination"},
+  {name:"Front Seat Navigator Companion", desc:"Certified expert driver from the comfort of doing nothing", efec:"+1 Charisma, +5 Navigation, -2 Patience, -2 Awareness"},
+  {name:"Leftover Logic", desc:"Things that don’t make sense suddenly make partial sense", efec:"+4 Procrastination, +4 Wisdom, -2 Awareness, -2 Luck, -2 Patience"},
+  {name:"Reverse Psychology", desc:"Puzzles try to trick you less when you overthink them", efec:"+2 Intelligence, +4 Wisdom, -2 Awareness, -2 Patience"},
+  {name:"Seven‑Leaf Clover", desc:"Your dice have a habit of always hitting the high numbers", efec:"+1 Charisma, +7 Luck,  -1 All Other Skills"}
 ];
 
-const perksContainer = document.getElementById("perksContainer");
-let selectedPerk = localStorage.getItem("selectedPerk") || null;
-let lastAppliedPerk = null;
+// Base skill values
+let baseSkillValues = {};
+let perkSkillBonus = {};
+let skillValues = {};
 
-// Parse perk effects
+// Persistent state
+let keptValue = JSON.parse(localStorage.getItem("keptDiceValue")) || 0;
+let totalSkillPoints = keptValue; // Total points earned from dice roll
+let skillPoints = JSON.parse(localStorage.getItem("skillPoints")) ?? totalSkillPoints; // Remaining points
+
+// let selectedPerk = localStorage.getItem("selectedPerk"); Anti Cheat Mechaninsm
+let selectedPerk = localStorage.getItem("selectedPerk");
+
+const savedDice = localStorage.getItem("keptDiceValue");
+if (savedDice !== null) keptValue = JSON.parse(savedDice);
+skillPoints = keptValue;
+localStorage.setItem("keptDiceValue", JSON.stringify(keptValue));
+
+
+// Initialize skills
+skillData.forEach(s => {
+  baseSkillValues[s.name] = 3;
+  perkSkillBonus[s.name] = 0;
+  skillValues[s.name] = 3;
+});
+
+// Load saved base skills
+const savedBase = JSON.parse(localStorage.getItem("baseSkillValues"));
+if (savedBase) {
+  Object.keys(savedBase).forEach(k => {
+    if (baseSkillValues[k] !== undefined) {
+      baseSkillValues[k] = savedBase[k];
+    }
+  });
+}
+
+/* ======================================================
+   PERK PARSING
+====================================================== */
+
 perkData.forEach(p => {
   const effects = {};
   p.efec.split(",").forEach(part => {
-    const match = part.trim().match(/^([+-]\d+)\s+(.+)$/);
-    if (!match) return;
-
-    const value = parseInt(match[1]);
-    const target = match[2];
-
-    if (target === "All Other Skills") {
-      effects.__ALL_OTHER__ = value;
-    } else {
-      effects[target] = value;
-    }
+    const m = part.trim().match(/^([+-]\d+)\s+(.+)$/);
+    if (!m) return;
+    effects[m[2]] = parseInt(m[1]);
   });
   p.effectsObj = effects;
 });
 
-
-// Apply perk effects safely
-function applyPerkEffects(perk) {
-  const allSkills = skillData.map(s => s.name);
-
-  // Remove last perk
-  if (lastAppliedPerk) {
-    Object.keys(lastAppliedPerk.effectsObj).forEach(key => {
-      const val = lastAppliedPerk.effectsObj[key];
-
-      if (key === "__ALL_OTHER__") {
-        allSkills.forEach(skill => {
-          if (!Object.keys(lastAppliedPerk.effectsObj).includes(skill)) {
-            skillValues[skill] -= val;
-          }
-        });
-      } else if (skillValues[key] !== undefined) {
-        skillValues[key] -= val;
-      }
-    });
-  }
-
-  // Apply new perk
-  if (perk) {
-    Object.keys(perk.effectsObj).forEach(key => {
-      const val = perk.effectsObj[key];
-
-      if (key === "__ALL_OTHER__") {
-        allSkills.forEach(skill => {
-          if (!Object.keys(perk.effectsObj).includes(skill)) {
-            skillValues[skill] += val;
-          }
-        });
-      } else if (skillValues[key] !== undefined) {
-        skillValues[key] += val;
-      }
-    });
-    lastAppliedPerk = perk;
-  } else {
-    lastAppliedPerk = null;
-  }
-
-  // Clamp values 1–10
-  allSkills.forEach(skill => {
-    if (skillValues[skill] < 1) skillValues[skill] = 1;
-    if (skillValues[skill] > 10) skillValues[skill] = 10;
-  });
-
-  updateSkillDisplay();
-  saveSkills();
-  localStorage.setItem("selectedPerk", perk ? perk.name : null);
+function clearPerkBonuses() {
+  Object.keys(perkSkillBonus).forEach(k => perkSkillBonus[k] = 0);
 }
 
+function applyPerk(perk) {
+  clearPerkBonuses();
+  if (!perk) return;
 
-// Render perks
+  const allSkills = skillData.map(s => s.name);
+
+  Object.entries(perk.effectsObj).forEach(([k,v]) => {
+    if (k === "All Other Skills") {
+      allSkills.forEach(s => {
+        if (!(s in perk.effectsObj)) perkSkillBonus[s] += v;
+      });
+    } else {
+      perkSkillBonus[k] += v;
+    }
+  });
+}
+
+/* ======================================================
+   RECOMPUTE & SAVE
+====================================================== */
+
+function recomputeSkills() {
+  skillData.forEach(s => {
+    skillValues[s.name] =
+      Math.min(10, Math.max(1, baseSkillValues[s.name] + perkSkillBonus[s.name]));
+  });
+}
+
+function saveAll() {
+  localStorage.setItem("baseSkillValues", JSON.stringify(baseSkillValues));
+  localStorage.setItem("skillPoints", JSON.stringify(skillPoints));
+  localStorage.setItem("selectedPerk", selectedPerk);
+}
+
+/* ======================================================
+   RENDER SKILLS
+====================================================== */
+
+function renderSkills() {
+  const c = document.getElementById("skillsContainer");
+  c.innerHTML = "";
+  const t = document.createElement("table");
+  t.classList.add("stroke");
+
+  skillData.forEach(s => {
+    const tr = document.createElement("tr");
+
+    // Decrement button
+const dec = document.createElement("Button");
+dec.textContent = "-";
+dec.dataset.dec = s.name;
+dec.onclick = () => {
+
+  // Ensure skillValues is up to date
+  recomputeSkills();
+
+  // Block if final value is already at minimum
+  if (skillValues[s.name] <= 1) return;
+
+  baseSkillValues[s.name]--;
+  skillPoints++;
+  updateUI();
+};
+
+    // Increment button
+    const inc = document.createElement("Button");
+    inc.textContent = "+";
+    inc.onclick = () => {
+      if (skillPoints <= 0) return;
+
+      // Compute max allowed increment considering perk bonus
+      const proposedFinal = Math.min(10, baseSkillValues[s.name] + perkSkillBonus[s.name] + 1);
+      const actualIncrement = proposedFinal - (baseSkillValues[s.name] + perkSkillBonus[s.name]);
+      if (actualIncrement <= 0) return;
+
+      baseSkillValues[s.name] += actualIncrement;
+      skillPoints -= actualIncrement;
+      updateUI();
+    };
+
+    // Value display
+    const val = document.createElement("span");
+    val.id = s.name + "Val";
+    val.classList.add("skill-value");
+    val.textContent = skillValues[s.name].toString().padStart(2,"0");
+
+    // Info cell
+    const infoTd = document.createElement("td");
+    const nameDiv = document.createElement("div");
+    nameDiv.textContent = s.name;
+    nameDiv.classList.add("skill-name");
+
+    const descDiv = document.createElement("div");
+    descDiv.textContent = s.desc;
+    descDiv.classList.add("skill-desc");
+
+    infoTd.appendChild(nameDiv);
+    infoTd.appendChild(descDiv);
+
+    // Append buttons and info
+    const decTd = document.createElement("td"); decTd.appendChild(dec);
+    const valTd = document.createElement("td"); valTd.appendChild(val);
+    const incTd = document.createElement("td"); incTd.appendChild(inc);
+
+    tr.append(decTd, valTd, incTd, infoTd);
+    t.appendChild(tr);
+  });
+
+  c.appendChild(t);
+}
+
+/* ======================================================
+   RENDER PERKS
+====================================================== */
+
 function renderPerks() {
-  const table = document.createElement("table");
+  const c = document.getElementById("perksContainer");
+  c.innerHTML = "";
+  const t = document.createElement("table");
+  t.classList.add("stroke");
 
   perkData.forEach(p => {
     const tr = document.createElement("tr");
 
-    const tdCheckbox = document.createElement("td");
-    tdCheckbox.classList.add("checkbox-cell");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = p.name;
-    checkbox.checked = (selectedPerk === p.name);
+    // Checkbox
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.checked = selectedPerk === p.name;
 
-    checkbox.addEventListener("change", () => {
-      if(checkbox.checked){
-        // Uncheck all others
-        document.querySelectorAll("#perksContainer input[type='checkbox']").forEach(cb => {
-          if(cb !== checkbox) cb.checked = false;
-        });
-        selectedPerk = p.name;
-        applyPerkEffects(p);
-      } else {
-        selectedPerk = null;
-        applyPerkEffects(null);
-      }
-    });
+    cb.onchange = () => {
+      // Uncheck all other perks
+      document.querySelectorAll("#perksContainer input").forEach(x => {
+        if (x !== cb) x.checked = false;
+      });
 
-    tdCheckbox.appendChild(checkbox);
-    tr.appendChild(tdCheckbox);
+      selectedPerk = cb.checked ? p.name : null;
 
+      // Reset all base skills to default
+      skillData.forEach(s => baseSkillValues[s.name] = 3);
+
+      // Restore skill points from kept dice roll
+      skillPoints = keptValue;
+
+      // Apply the perk if checked
+      applyPerk(cb.checked ? p : null);
+
+      // Update UI and save
+      updateUI();
+    };
+
+    const tdCb = document.createElement("td");
+    tdCb.classList.add("checkbox-cell");
+    tdCb.appendChild(cb);
+
+    // Info cell
     const tdInfo = document.createElement("td");
     const nameDiv = document.createElement("div");
-    nameDiv.classList.add("perk-name");
     nameDiv.textContent = p.name;
+    nameDiv.classList.add("perk-name");
+
     const descDiv = document.createElement("div");
-    descDiv.classList.add("perk-desc");
     descDiv.textContent = p.desc;
+    descDiv.classList.add("perk-desc");
+
     const efecDiv = document.createElement("div");
     efecDiv.classList.add("perk-efec");
-    efecDiv.textContent = p.efec;
+    efecDiv.innerHTML = p.efec
+      .split(",")
+      .map(part => {
+        part = part.trim();
+        if (part.startsWith("+")) return `<span class="perk-plus">${part}</span>`;
+        if (part.startsWith("-")) return `<span class="perk-minus">${part}</span>`;
+        return part;
+      })
+      .join('<span style="color:#aaa">, </span>');
+
     tdInfo.appendChild(nameDiv);
     tdInfo.appendChild(descDiv);
     tdInfo.appendChild(efecDiv);
-    tr.appendChild(tdInfo);
 
-    table.appendChild(tr);
+    tr.append(tdCb, tdInfo);
+    t.appendChild(tr);
   });
 
-  perksContainer.innerHTML = "";
-  perksContainer.appendChild(table);
-
-  if(selectedPerk){
-    const saved = perkData.find(p => p.name === selectedPerk);
-    if(saved){
-      const checkbox = document.getElementById(saved.name);
-      if(checkbox) checkbox.checked = true;
-      applyPerkEffects(saved);
-    }
-  }
+  c.appendChild(t);
 }
 
-// --- Initialize ---
+/* ======================================================
+   UI UPDATE
+====================================================== */
+
+function updateUI() {
+  recomputeSkills();
+
+  document.getElementById("skillPoints").textContent = skillPoints;
+
+  skillData.forEach(s => {
+    const valEl = document.getElementById(s.name + "Val");
+    valEl.textContent = skillValues[s.name].toString().padStart(2,"0");
+
+    // Reset classes
+    valEl.classList.remove("skill-boosted", "skill-penalized");
+
+    // Apply color based on perk effect
+    if (perkSkillBonus[s.name] > 0) {
+      valEl.classList.add("skill-boosted");
+    } else if (perkSkillBonus[s.name] < 0) {
+      valEl.classList.add("skill-penalized");
+    }
+
+    // Disable decrement button if at minimum
+    const decBtn = document.querySelector(`Button[data-dec='${s.name}']`);
+    if (decBtn) decBtn.disabled = baseSkillValues[s.name] === 1;
+
+    // Disable increment button if at max or no points
+    const incBtn = decBtn.parentElement.nextElementSibling.querySelector("Button");
+    if (incBtn) incBtn.disabled = skillPoints <= 0 || skillValues[s.name] >= 10;
+  });
+
+  saveAll();
+}
+
+
+/* ======================================================
+   INIT
+====================================================== */
+
+if (selectedPerk) {
+  const p = perkData.find(x => x.name === selectedPerk);
+  if (p) applyPerk(p);
+}
+
 renderSkills();
-updateSkillDisplay();
 renderPerks();
+updateUI();
 </script>
+
+
 
 </section>
 
 <!======== Section 5: Start Quest ========>
 <section>
-<h2>Start Quest</h2>
-<button id="startQuest">Start Quest</button>
+  <h2>Start Quest</h2>
+  <button id="startQuestBtn">Start The Adventure</button>
+<p id="startError" style="color:#ff5555; display:none; margin-top:10px; text-align:center;"></p>
 </section>
+<script>
+
+function lockCharacterState() {
+  // Force skill points to zero
+  skillPoints = 0;
+  localStorage.setItem("skillPoints", "0");
+
+  // Lock flag
+  localStorage.setItem("characterLocked", "true");
+
+  // Persist final character state
+  localStorage.setItem("charName", document.getElementById("charName").value);
+  localStorage.setItem("race", document.getElementById("raceSelect").value);
+  localStorage.setItem("class", document.getElementById("classSelect").value);
+  localStorage.setItem("selectedPerk", selectedPerk);
+  localStorage.setItem("baseSkillValues", JSON.stringify(baseSkillValues));
+  localStorage.setItem("skillValues", JSON.stringify(skillValues));
+  localStorage.setItem("diceRolls", JSON.stringify(diceRolls));
+  localStorage.setItem("discardedDice", JSON.stringify(discarded));
+  localStorage.setItem("keptDiceValue", JSON.stringify(keptValue));
+}
+
+const startBtn = document.getElementById("startQuestBtn");
+const errorBox = document.getElementById("startError");
+
+startBtn.addEventListener("click", () => {
+  errorBox.style.display = "none";
+  errorBox.textContent = "";
+
+  // Required fields
+const name = charName.value.trim();
+
+if (name.length < 3) {
+  return showError("Character name must be at least 3 characters long.");
+  }
+  if (!raceSelect.value) {
+    return showError("You must choose a race.");
+  }
+  if (!classSelect.value) {
+    return showError("You must choose a class.");
+  }
+
+  // Dice check
+  if (diceRolls.length !== 2 || discarded === null) {
+    return showError("You must roll the dice and choose one.");
+  }
+
+  // Perk check
+  if (!selectedPerk) {
+    return showError("You must select exactly one perk.");
+  }
+
+  // Skill points must be spent
+  if (skillPoints !== 0) {
+    return showError("You must spend all skill points.");
+  }
+
+  // ✅ VALID — lock everything
+  lockCharacterState();
+
+  // Redirect
+  window.location.href =
+    "https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO/adventure.html";
+});
+
+function showError(msg) {
+  errorBox.textContent = msg;
+  errorBox.style.display = "block";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("characterLocked") !== "true") return;
+
+  /* ---------------------------
+     RESTORE SAVED VALUES
+  ----------------------------*/
+
+  // Identity
+  charName.value   = localStorage.getItem("charName") || "";
+  raceSelect.value = localStorage.getItem("race") || "";
+  classSelect.value= localStorage.getItem("class") || "";
+
+  // Dice
+  diceRolls = JSON.parse(localStorage.getItem("diceRolls")) || [];
+  discarded = JSON.parse(localStorage.getItem("discardedDice"));
+  keptValue = JSON.parse(localStorage.getItem("keptDiceValue")) || 0;
+
+  // Skills & perks
+  baseSkillValues = JSON.parse(localStorage.getItem("baseSkillValues")) || baseSkillValues;
+  skillValues     = JSON.parse(localStorage.getItem("skillValues")) || skillValues;
+  selectedPerk    = localStorage.getItem("selectedPerk");
+
+  // Force zero points
+  skillPoints = 0;
+  localStorage.setItem("skillPoints", "0");
+
+  // Reapply perk math
+  if (selectedPerk) {
+    const p = perkData.find(x => x.name === selectedPerk);
+    if (p) applyPerk(p);
+  }
+
+  updateUI();
+
+  /* ---------------------------
+     HARD LOCK ALL CONTROLS
+  ----------------------------*/
+
+  // Text + selects
+  document.querySelectorAll("input, select").forEach(el => {
+    if (el.id !== "startQuestBtn") {
+      el.disabled = true;
+    }
+  });
+
+  // Skill buttons
+  document
+    .querySelectorAll("#skillsContainer button")
+    .forEach(b => b.disabled = true);
+
+  // Perk checkboxes
+  document
+    .querySelectorAll("#perksContainer input[type='checkbox']")
+    .forEach(cb => cb.disabled = true);
+
+  // Dice interaction (already rolled)
+  document
+    .querySelectorAll(".dice-wrapper")
+    .forEach(d => d.style.pointerEvents = "none");
+
+  /* ---------------------------
+     KEEP START BUTTON ACTIVE
+  ----------------------------*/
+  startBtn.disabled = false;
+});
+</script>
+
 
 
 </body>
