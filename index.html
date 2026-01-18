@@ -949,8 +949,9 @@ function collectCharacterData() {
   };
 }
  async function saveToGoogleSheets() {
-  const data = collectCharacterData();
-  const url = "https://script.google.com/macros/library/d/1gS-oVXWgD96hSAqT2jH10hwsy0YgqIQqyYBOWq-s2RuSkdokAGgQoqKx/1"; // Replace with your Apps Script URL
+  const data = collectCharacterData(); // or use test data if you want
+
+  const url = "https://script.google.com/macros/s/AKfycbwkUi3QaIzCUn2M9nxP3UIK-1LfXYnX2i2CU7F3thJdhoN8jvWgYOyps-7ClT6NsaD4/exec";
 
   try {
     const res = await fetch(url, {
@@ -971,4 +972,3 @@ function collectCharacterData() {
 </script>
 </body>
 </html>
-
