@@ -816,7 +816,7 @@ function lockCharacterState() {
 const startBtn = document.getElementById("startQuestBtn");
 const errorBox = document.getElementById("startError");
 
-startBtn.addEventListener("click", async () => {
+startBtn.addEventListener("click", () => {
   errorBox.style.display = "none";
   errorBox.textContent = "";
 
@@ -851,11 +851,9 @@ if (name.length < 3) {
   // ✅ VALID — lock everything
   lockCharacterState();
 
-  await saveToGoogleSheets();
-
   // Redirect
   window.location.href =
-    "https://www.youtube.com/watch?v=fW-O5iGRMFo&list=RDfW-O5iGRMFo&start_radio=1";
+    "https://stealthygundam.github.io/Patience/";
 });
 
 function showError(msg) {
@@ -935,40 +933,16 @@ function collectCharacterData() {
     charName: localStorage.getItem("charName"),
     race: localStorage.getItem("race"),
     class: localStorage.getItem("class"),
-    background: localStorage.getItem("background"),
-    keptDiceRolls: JSON.parse(localStorage.getItem("keptDiceRolls") || "[]"),
-    discardedDiceRolls: JSON.parse(localStorage.getItem("discardedDiceRolls") || "[]"),
-    awareness: parseInt(localStorage.getItem("awareness") || "0"),
-    charisma: parseInt(localStorage.getItem("charisma") || "0"),
-    intelligence: parseInt(localStorage.getItem("intelligence") || "0"),
-    luck: parseInt(localStorage.getItem("luck") || "0"),
-    navigation: parseInt(localStorage.getItem("navigation") || "0"),
-    patience: parseInt(localStorage.getItem("patience") || "0"),
-    procrastination: parseInt(localStorage.getItem("procrastination") || "0"),
-    wisdom: parseInt(localStorage.getItem("wisdom") || "0")
+    skillValues: JSON.parse(localStorage.getItem("skillValues") || "{}"),
+    diceRolls: JSON.parse(localStorage.getItem("diceRolls") || "[]"),
+    selectedPerk: localStorage.getItem("selectedPerk")
   };
 }
- async function saveToGoogleSheets() {
-  const data = collectCharacterData(); // or use test data if you want
 
-  const url = "https://script.google.com/macros/s/AKfycbwkUi3QaIzCUn2M9nxP3UIK-1LfXYnX2i2CU7F3thJdhoN8jvWgYOyps-7ClT6NsaD4/exec";
-
-  try {
-    const res = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
-    });
-
-    const json = await res.json();
-    if (json.status !== "success") throw new Error(json.message || "Unknown error");
-
-    console.log("Saved character to Google Sheets!");
-  } catch (err) {
-    console.error("Failed to save:", err);
-  }
-}
-
+ 
 </script>
+
+
+
 </body>
 </html>
