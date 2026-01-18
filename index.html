@@ -936,16 +936,15 @@ function collectCharacterData() {
     charName: localStorage.getItem("charName"),
     race: localStorage.getItem("race"),
     class: localStorage.getItem("class"),
-    selectedPerk: localStorage.getItem("selectedPerk"),
-    diceRolls: JSON.parse(localStorage.getItem("diceRolls") || "[]"),
     skillValues: JSON.parse(localStorage.getItem("skillValues") || "{}"),
+    diceRolls: JSON.parse(localStorage.getItem("diceRolls") || "[]"),
     selectedPerk: localStorage.getItem("selectedPerk")
   };
 }
 
 
 async function saveToGitHub() {
-  const token = "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"; //⚠️
+  const token = "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"; //⚠️
   const owner = "StealthyGundam";
   const repo = "character";
   const path = "character-data.json";
