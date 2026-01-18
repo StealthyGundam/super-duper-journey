@@ -851,8 +851,7 @@ if (name.length < 3) {
   // ✅ VALID — lock everything
   lockCharacterState();
 
-
-  await saveToGitHub();
+  await saveToGoogleSheets();
 
   // Redirect
   window.location.href =
@@ -936,51 +935,39 @@ function collectCharacterData() {
     charName: localStorage.getItem("charName"),
     race: localStorage.getItem("race"),
     class: localStorage.getItem("class"),
-    skillValues: JSON.parse(localStorage.getItem("skillValues") || "{}"),
-    diceRolls: JSON.parse(localStorage.getItem("diceRolls") || "[]"),
-    selectedPerk: localStorage.getItem("selectedPerk")
+    background: localStorage.getItem("background"),
+    keptDiceRolls: JSON.parse(localStorage.getItem("keptDiceRolls") || "[]"),
+    discardedDiceRolls: JSON.parse(localStorage.getItem("discardedDiceRolls") || "[]"),
+    awareness: parseInt(localStorage.getItem("awareness") || "0"),
+    charisma: parseInt(localStorage.getItem("charisma") || "0"),
+    intelligence: parseInt(localStorage.getItem("intelligence") || "0"),
+    luck: parseInt(localStorage.getItem("luck") || "0"),
+    navigation: parseInt(localStorage.getItem("navigation") || "0"),
+    patience: parseInt(localStorage.getItem("patience") || "0"),
+    procrastination: parseInt(localStorage.getItem("procrastination") || "0"),
+    wisdom: parseInt(localStorage.getItem("wisdom") || "0")
   };
 }
+ async function saveToGoogleSheets() {
+  const data = collectCharacterData();
+  const url = "https://script.google.com/macros/s/AKfycbxTzS5mcevoLo3Ci2zBPSLgrEzs2eeGgBWKsWbsrhgvyiuidSpv39iLCXrxF8gWVcnU/exec"; // Replace with your Apps Script URL
 
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    });
 
-async function saveToGitHub() {
-  const token = "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"; //⚠️
-  const owner = "StealthyGundam";
-  const repo = "character";
-  const path = "character-data.json";
+    const json = await res.json();
+    if (json.status !== "success") throw new Error(json.message || "Unknown error");
 
-  const apiUrl = `https://api.github.com/repos/StealthyGundam/character/contents/character-data.json
-`;
-
-  // Get existing file (needed for SHA)
-  const existing = await fetch(apiUrl, {
-    headers: { Authorization: `token ${token}` }
-  }).then(r => r.json());
-
-  const existingData = JSON.parse(atob(existing.content));
-
-  existingData.push(collectCharacterData());
-
-  const updatedContent = btoa(
-    JSON.stringify(existingData, null, 2)
-  );
-
-  await fetch(apiUrl, {
-    method: "PUT",
-    headers: {
-      Authorization: `token ${token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: "Add character",
-      content: updatedContent,
-      sha: existing.sha
-    })
-  });
+    console.log("Saved character to Google Sheets!");
+  } catch (err) {
+    console.error("Failed to save:", err);
+  }
 }
+
 </script>
-
-
-
 </body>
 </html>
