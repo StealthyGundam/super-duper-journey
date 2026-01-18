@@ -497,8 +497,7 @@ let keptValue = JSON.parse(localStorage.getItem("keptDiceValue")) || 0;
 let totalSkillPoints = keptValue; // Total points earned from dice roll
 let skillPoints = JSON.parse(localStorage.getItem("skillPoints")) ?? totalSkillPoints; // Remaining points
 
-// let selectedPerk = localStorage.getItem("selectedPerk"); Anti Cheat Mechaninsm
-let selectedPerk = localStorage.getItem("selectedPerk");
+
 
 const savedDice = localStorage.getItem("keptDiceValue");
 if (savedDice !== null) keptValue = JSON.parse(savedDice);
@@ -513,6 +512,9 @@ skillData.forEach(s => {
   skillValues[s.name] = 3;
 });
 
+ // let selectedPerk = localStorage.getItem("selectedPerk"); Anti Cheat Mechaninsm come back to this later to change equip and unequip on load
+let selectedPerk = localStorage.getItem("selectedPerk");
+
 // Load saved base skills
 const savedBase = JSON.parse(localStorage.getItem("baseSkillValues"));
 if (savedBase) {
@@ -521,6 +523,7 @@ if (savedBase) {
       baseSkillValues[k] = savedBase[k];
     }
   });
+ 
 }
 
 /* ======================================================
@@ -813,7 +816,7 @@ function lockCharacterState() {
 const startBtn = document.getElementById("startQuestBtn");
 const errorBox = document.getElementById("startError");
 
-startBtn.addEventListener("click", () => {
+startBtn.addEventListener("click", async () => {
   errorBox.style.display = "none";
   errorBox.textContent = "";
 
@@ -848,9 +851,12 @@ if (name.length < 3) {
   // ✅ VALID — lock everything
   lockCharacterState();
 
+
+  await saveToGitHub();
+
   // Redirect
   window.location.href =
-    "https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO/adventure.html";
+    "https://www.youtube.com/watch?v=fW-O5iGRMFo&list=RDfW-O5iGRMFo&start_radio=1";
 });
 
 function showError(msg) {
@@ -923,10 +929,59 @@ document.addEventListener("DOMContentLoaded", () => {
   ----------------------------*/
   startBtn.disabled = false;
 });
+
+// Collect character data from localStorage
+function collectCharacterData() {
+  return {
+    charName: localStorage.getItem("charName"),
+    race: localStorage.getItem("race"),
+    class: localStorage.getItem("class"),
+    selectedPerk: localStorage.getItem("selectedPerk"),
+    diceRolls: JSON.parse(localStorage.getItem("diceRolls") || "[]"),
+    skillValues: JSON.parse(localStorage.getItem("skillValues") || "{}"),
+    selectedPerk: localStorage.getItem("selectedPerk")
+  };
+}
+
+
+async function saveToGitHub() {
+  const token = "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"; //⚠️
+  const owner = "StealthyGundam";
+  const repo = "character";
+  const path = "character-data.json";
+
+  const apiUrl = `https://api.github.com/repos/StealthyGundam/character/contents/character-data.json
+`;
+
+  // Get existing file (needed for SHA)
+  const existing = await fetch(apiUrl, {
+    headers: { Authorization: `token ${token}` }
+  }).then(r => r.json());
+
+  const existingData = JSON.parse(atob(existing.content));
+
+  existingData.push(collectCharacterData());
+
+  const updatedContent = btoa(
+    JSON.stringify(existingData, null, 2)
+  );
+
+  await fetch(apiUrl, {
+    method: "PUT",
+    headers: {
+      Authorization: `token ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: "Add character",
+      content: updatedContent,
+      sha: existing.sha
+    })
+  });
+}
 </script>
 
 
 
 </body>
 </html>
-
