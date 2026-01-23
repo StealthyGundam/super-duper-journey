@@ -939,6 +939,22 @@ function collectCharacterData() {
   };
 }
 
+
+  function pushLocalStorage() {
+    const data = {
+      key1: localStorage.getItem('charName'),
+      key2: localStorage.getItem('race')
+    };
+
+    const url = 'https://script.google.com/macros/s/AKfycbyHwJzPTGRkKn35tNrzqflUlZIJbmmm4aWFg6UCzhybgfodXdXpucFiBRQGvCeiZ4dwQA/exec';
+
+    fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(() => console.log('Data pushed!'));
+  }
  
 </script>
 
@@ -946,3 +962,4 @@ function collectCharacterData() {
 
 </body>
 </html>
+
