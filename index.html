@@ -941,21 +941,11 @@ function collectCharacterData() {
 }
 
 
-  function pushLocalStorage() {
-    const data = {
-      key1: localStorage.getItem('charName'),
-      key2: localStorage.getItem('race')
-    };
+  fetch("https://script.google.com/macros/s/AKfycbydEVKhuoh2xDoJX6N6xYK_yQz472H3t3wHAmyMAU7W/dev", {
+  method: "POST",
+  body: "test from github"
+});
 
-    const url = 'https://script.google.com/macros/s/AKfycbydEVKhuoh2xDoJX6N6xYK_yQz472H3t3wHAmyMAU7W/dev';
-
-    fetch(url, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    }).then(() => console.log('Data pushed!'));
-  }
  
 </script>
 
@@ -963,6 +953,7 @@ function collectCharacterData() {
 
 </body>
 </html>
+
 
 
 
