@@ -850,7 +850,7 @@ if (name.length < 3) {
 
   // ✅ VALID — lock everything
   lockCharacterState();
-  export();
+  kvexport();
 
 
   // Redirect
@@ -944,10 +944,10 @@ function collectCharacterData() {
 
 
 
-  const endpoint = "https://local-storage.justin-kassam.workers.dev";
+const endpoint = "https://local-storage.justin-kassam.workers.dev";
 
 
-function export(){
+function kvexport() {
   fetch("https://local-storage.justin-kassam.workers.dev", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -961,7 +961,7 @@ function export(){
   .catch(console.error);
 }
 
-export();
+kvexport();
   
  
 </script>
@@ -970,6 +970,7 @@ export();
 
 </body>
 </html>
+
 
 
 
