@@ -929,17 +929,7 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.disabled = false;
 });
 
-// Collect character data from localStorage
-function collectCharacterData() {
-  return {
-    charName: localStorage.getItem("charName"),
-    race: localStorage.getItem("race"),
-    class: localStorage.getItem("class"),
-    skillValues: JSON.parse(localStorage.getItem("skillValues") || "{}"),
-    diceRolls: JSON.parse(localStorage.getItem("diceRolls") || "[]"),
-    selectedPerk: localStorage.getItem("selectedPerk")
-  };
-}
+
 
 
 
@@ -970,7 +960,6 @@ kvexport();
 
 </body>
 </html>
-
 
 
 
